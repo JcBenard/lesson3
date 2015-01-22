@@ -2,17 +2,17 @@
  * @author Jc
  *Class Description: Creating a vehicle class to use as a super class for all other vehicle subclasses
  */
-public class Vehicle {
+public abstract class Vehicle {
 
 	//private properties///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	private int numWheels = 4;
-	private int numDoors = 2;
-	private String colour = "";
-	private String make = "";
-	private String model = "";
-	private String year = "";
-	private float speed = 0;
-	private final int MAX_SPEED = 40;
+	protected int numWheels = 4;
+	protected int numDoors = 2;
+	protected String colour = "";
+	protected String make = "";
+	protected String model = "";
+	protected String year = "";
+	protected float speed = 0;
+	protected final int MAX_SPEED = 40;
 	
 	//Getter methods///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	/**
@@ -64,27 +64,27 @@ public class Vehicle {
 		return this.speed;
 	}
 	
-	//constructor///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	public Vehicle(){
-		
+	//constructors///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+	public Vehicle(int numWheels, int numDoors, String colour, String make, String model, String year){
+		this.numWheels = numWheels;
+		this.numDoors = numDoors;
+		this.colour = colour;
+		this.make = make;
+		this.model = model;
+		this.year = year;
 	}
 	
+	public Vehicle(String colour, String make, String model, String year){
+		this.colour = colour;
+		this.make = make;
+		this.model = model;
+		this.year = year;
+	}
 	//public methods////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	public void accelerate(){
-		this.speed += 4; 
-		
-		if(this.speed >= this.MAX_SPEED){
-			this.speed = this.MAX_SPEED;
-		}
-	}
+	//Must be overwritten
+	public abstract void accelerate();
 	
-	public void decelerate(){
-		this.speed -= 6;
-		
-		if(this.speed < 0){
-			this.speed = 0;
-		}
-	}
+	public abstract void decelerate();
 	
 	public void turnLeft(){
 		System.out.println("Turning Left");
